@@ -52,8 +52,8 @@ class CashCalculator(Calculator):
             'eur': (self.EURO_RATE, 'Euro'),
             'rub': (self.RUB_RATE, 'руб')
             }
-        if CURRENCIES.get(currency) == None:   
-            raise ValueError ('Хозяин,таких денег нет в нашем царстве')
+        if currency not in CURRENCIES:
+            raise KeyError ('Хозяин,таких денег нет в нашем царстве')     
         currency=CURRENCIES[currency]        
         first_currency,second_currency=currency
         stat = round(today_stat / first_currency, 2)
@@ -69,9 +69,12 @@ class CaloriesCalculator (Calculator):
     
     def get_calories_remained(self):
         stats = self.today_stats()
-        print("Сегодня можно съесть что-нибудь ещё, "
+        if stats > 0:
+            return("Сегодня можно съесть что-нибудь ещё, "
                 f"но с общей калорийностью не более {stats} кКал"
             )
         if stats <= 0:
-            print('Хватит есть!')
+            return('Хватит есть!')
             
+cash_calculator = CashCalculator(1000)
+        
