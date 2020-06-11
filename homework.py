@@ -74,10 +74,6 @@ class CaloriesCalculator (Calculator):
         return("Сегодня можно съесть что-нибудь ещё, "
             f"но с общей калорийностью не более {stats} кКал"
           )
-        #if stats > 0:
-        #    return("Сегодня можно съесть что-нибудь ещё, "
-         #       f"но с общей калорийностью не более {stats} кКал"
-          #  )
         
             
 cash_calculator = CashCalculator(1000)
