@@ -53,7 +53,7 @@ class CashCalculator(Calculator):
             'rub': (self.RUB_RATE, 'руб')
             }
         if currency not in CURRENCIES:
-            raise KeyError ('Хозяин,таких денег нет в нашем царстве')     
+            raise ValueError ('Хозяин,таких денег нет в нашем царстве')     
         currency=CURRENCIES[currency]        
         first_currency,second_currency=currency
         stat = round(today_stat / first_currency, 2)
