@@ -1,25 +1,23 @@
 import datetime as dt
-DATE = dt.date.today()
 class Record:
-    
-    def __init__(self,amount,comment,date=None):
-        self.amount = amount 
+    def __init__(self,amount,comment,date=None):    
+        self.amount = amount
         self.comment = comment
         if date == None:
+            DATE = dt.date.today()
             self.date = DATE
         else:
             self.date = dt.datetime.strptime(date, '%d.%m.%Y').date()
 
 class Calculator:
-    
     def __init__(self,limit):
         self.limit=limit
         self.records = []
     
     def add_record(self,record):
         self.records.append(record)
-    
     def get_today_stats(self):
+        DATE = dt.date.today()
         return sum(record.amount 
             for record in self.records 
                 if record.date == DATE
@@ -27,6 +25,7 @@ class Calculator:
         
     
     def get_week_stats(self):
+        DATE = dt.date.today()
         week_ago = DATE - dt.timedelta(days=7)
         return sum(record.amount
             for record in self.records
@@ -76,5 +75,4 @@ class CaloriesCalculator (Calculator):
           )
         
             
-cash_calculator = CashCalculator(1000)
         
